@@ -1,114 +1,46 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Service L90 - مدیریت سرویس خودرو L90">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="icon" href="/icons/icon-192.png">
-  <title>Service L90</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Service L90</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.json">
 </head>
 <body class="light">
-
-  <header class="app-header">
-    <div class="left">
-      <img src="icons/icon-192.png" alt="L90" class="app-icon">
-    </div>
-    <div class="center">
-      <h1>Service L90</h1>
-      <p class="subtitle">مدیریت سرویس‌های دوره‌ای خودرو</p>
-    </div>
-    <div class="right">
-      <button id="themeBtn" aria-label="تغییر تم">🌓</button>
-      <button id="installBtn" aria-label="نصب" style="display:none">⬇️</button>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="card">
-      <h2>خودرو</h2>
-      <div class="row">
-        <label>مدل</label>
-        <input id="carName" placeholder="مثلاً L90" value="L90">
-      </div>
-      <div class="row">
-        <label>پلاک</label>
-        <input id="carPlate" placeholder="پلاک">
-      </div>
-      <div class="row">
-        <label>کیلومتر فعلی</label>
-        <input id="carKm" type="number" value="12000">
-      </div>
-      <div class="row">
-        <button id="saveCar">ذخیره خودرو</button>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>سرویس‌ها</h2>
-      <div id="serviceList"></div>
-
-      <h3>افزودن سرویس جدید</h3>
-      <div class="row">
-        <label>عنوان</label>
-        <input id="svcTitle" placeholder="مثلاً تعویض روغن">
-      </div>
-      <div class="row">
-        <label>تاریخ</label>
-        <input id="svcDate" type="date">
-      </div>
-      <div class="row">
-        <label>کیلومتر هدف</label>
-        <input id="svcKm" type="number" placeholder="مثلاً 13000">
-      </div>
-      <div class="row">
-        <label>توضیحات</label>
-        <input id="svcNotes" placeholder="یادداشت...">
-      </div>
-      <div class="row">
-        <button id="addSvc">افزودن سرویس</button>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>گزارش و خروجی</h2>
-      <div class="row">
-        <button id="exportCsv">خروجی Excel (CSV)</button>
-        <button id="exportPdf">خروجی PDF</button>
-      </div>
-      <div class="row">
-        <button id="clearData" class="danger">حذف همه داده‌ها</button>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>داشبورد</h2>
-      <div id="dashboard"></div>
-    </section>
-
-    <footer class="footer">
-      <small>نسخهٔ PWA - Service L90 • ذخیره محلی روی دستگاه</small>
-    </footer>
-  </main>
-
-  <script src="app.js"></script>
-  <script>
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      document.getElementById('installBtn').style.display = 'inline-block';
-    });
-    document.getElementById('installBtn').addEventListener('click', async () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        deferredPrompt = null;
-      } else {
-        alert('برای نصب: از منوی اشتراک (Share) گزینه «Add to Home Screen» را انتخاب کنید.');
-      }
-    });
-  </script>
+<header class="app-header">
+<div class="left"><img src="icons/icon-192.png" class="app-icon"></div>
+<div class="center"><h1>Service L90</h1><p class="subtitle">مدیریت سرویس‌های دوره‌ای خودرو</p></div>
+<div class="right"><button id="themeBtn">🌓</button><button id="installBtn" style="display:none">⬇️</button></div>
+</header>
+<main class="container">
+<section class="card">
+<h2>خودرو</h2>
+<div class="row"><label>مدل</label><input id="carName" placeholder="مثلاً L90" value="L90"></div>
+<div class="row"><label>پلاک</label><input id="carPlate" placeholder="پلاک"></div>
+<div class="row"><label>کیلومتر فعلی</label><input id="carKm" type="number" value="12000"></div>
+<div class="row"><button id="saveCar">ذخیره خودرو</button></div>
+</section>
+<section class="card">
+<h2>سرویس‌ها</h2>
+<div id="serviceList"></div>
+<h3>افزودن سرویس جدید</h3>
+<div class="row"><label>عنوان</label><input id="svcTitle" placeholder="مثلاً تعویض روغن"></div>
+<div class="row"><label>تاریخ</label><input id="svcDate" type="date"></div>
+<div class="row"><label>کیلومتر هدف</label><input id="svcKm" type="number" placeholder="مثلاً 13000"></div>
+<div class="row"><label>توضیحات</label><input id="svcNotes" placeholder="یادداشت..."></div>
+<div class="row"><button id="addSvc">افزودن سرویس</button></div>
+</section>
+<section class="card">
+<h2>گزارش و خروجی</h2>
+<div class="row"><button id="exportCsv">خروجی Excel (CSV)</button><button id="exportPdf">خروجی PDF</button></div>
+<div class="row"><button id="clearData" class="danger">حذف همه داده‌ها</button></div>
+</section>
+<section class="card">
+<h2>داشبورد</h2>
+<div id="dashboard"></div>
+</section>
+<footer class="footer"><small>نسخهٔ PWA - Service L90 • ذخیره محلی روی دستگاه</small></footer>
+<script src="app.js"></script>
 </body>
 </html>
